@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lligafutbol/style.css' %}">
+    <title>Llista de lligues</title>
+  </head>
+  <body>
+    <h1>Llista de lligues</h1>
+    <p>Tria la lliga que vols visualitzar:</p>
+
+    <ul>
+      {% for lliga in lligues %}
+        <li><a href="/classificacio/{{lliga.id}}">{{lliga}}</a></li>
+      {% endfor  %}
+    </ul>
+
+
+<fieldset>
+  <legend>També pots fer-ho des de aquest formulari:</legend>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+     
+      <input type="submit" name="submit" value="Anar">
+    </form>
+  </fieldset>
+
+  <p><a href="/crea_equip">Crear equip</a></p>
+
+  </body>
+</html>
+
+
+
